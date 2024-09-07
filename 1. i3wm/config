@@ -1,7 +1,7 @@
 # ------------------ Graphical Config -----------------------
 
 # Start Picom (compositor) in daemon mode for window effects like transparency and shadows
-exec --no-startup-id picom --daemon
+exec --no-startup-id picom
 
 # Launch i3 with D-Bus for communication; avoid registering it as a startup application
 exec --no-startup-id dbus-launch i3
@@ -18,8 +18,12 @@ exec --no-startup-id feh --bg-fill ~/Pictures/walpapper.jpg
 # Windows key
 set $mod Mod4
 
-# Fonts
-font pango:monospace 8
+# better bar
+exec_always --no-startup-id killall polybar
+exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
+
+# Fonts and font size
+font pango:JetBrains Mono Nerd Font Medium 10
 
 # Start Dex to handle autostart applications in the i3 environment
 exec --no-startup-id dex --autostart --environment i3
@@ -35,9 +39,6 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
 
 # change focus
 bindsym $mod+j focus left
@@ -81,7 +82,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+Alt+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -159,14 +160,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-          tray_output primary
-	status_command i3block
-        status_command i3status
-}
 
 # Create Log out, Reboot, Poweroff bindings
 mode "(S)uspend, (L)ogout, (R)eboot, (P)oweroff" {
@@ -250,6 +243,11 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # ------------------ Config workspace -----------------------
 
 # start a terminal
-bindsym $mod+Return exec __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia kitty
+bindsym $mod+Return exec __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia alacritty
+
+# start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+space exec --no-startup-id rofi -show combi
+bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # ------------------ Config workspace -----------------------

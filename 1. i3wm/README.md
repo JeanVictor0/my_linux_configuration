@@ -12,7 +12,7 @@ If you have Debian, just install what you haven't installed.
 2. Install the graphical interface i3 and slim (or any other you prefer) and depedences:
    ```bash
    apt install i3 slim xorg -y
-   apt install picom dbus-x11 lxpolkit feh dex xss-lock i3lock network-manager-gnome maim xclip playerctl alsa-utils brightnessctl kitty xdotool i3status i3blocks -y
+   apt install picom dbus-x11 lxpolkit feh dex xss-lock i3lock network-manager-gnome maim xclip playerctl alsa-utils brightnessctl kitty xdotool i3status i3blocks stow -y
    ```
 
 3. Reconfigure your system:
