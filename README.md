@@ -1,4 +1,4 @@
-# my_utilmate_workspace_linux
+# my_linux_configuration
 
 ## About
 
